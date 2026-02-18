@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class ContactsList {
     private static final ArrayList<Contact> contacts = new ArrayList<>();
-   private static boolean isActive = true;
+    private static boolean isActive = true;
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -14,7 +14,7 @@ public class ContactsList {
             printMenu();
             userChoice = scanner.nextLine();
 
-            switch (userChoice){
+            switch (userChoice) {
                 case "1" -> addContact(scanner);
                 case "2" -> printAllContacts();
                 case "3" -> exitProgram();
@@ -42,24 +42,24 @@ public class ContactsList {
     }
 
     private static void printAllContacts() {
-        if (contacts.isEmpty()){
+        if (contacts.isEmpty()) {
             System.out.println("\nYour contact names list is still empty !\n");
         } else {
             System.out.println("\nCurrent contacts list:");
             for (Contact contact : contacts) {
                 System.out.println("Name: " +
-                        contact.name + "\nPhone number: " + contact.number);
+                        contact.getName() + "\nPhone number: " + contact.getNumber());
             }
             System.out.println();
         }
     }
 
-    private static void addContact(Scanner scanner){
+    private static void addContact(Scanner scanner) {
         Contact newContact = new Contact();
         System.out.println("\nEnter the new contact's name:");
-        newContact.name = scanner.nextLine();
+        newContact.setName(scanner.nextLine());
         System.out.println("Enter the new contact's phone number:");
-        newContact.number = scanner.nextLine();
+        newContact.setNumber(scanner.nextLine());
         contacts.add(newContact);
         System.out.println("\nNew contact added to your list successfully.\n");
     }
